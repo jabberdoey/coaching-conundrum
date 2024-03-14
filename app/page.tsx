@@ -1,11 +1,7 @@
 import Login from "@/components/login/login";
 
-export default function Home() {
+export default function Page() {
   return (
-    <main className="w-full">
-      <div className="p-5">
-        <Login />
-      </div>
-    </main>
+      <Login />
   );
 }

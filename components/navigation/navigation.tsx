@@ -1,0 +1,33 @@
+import Link from "next/link";
+
+const links = [
+    {
+        name: "Home",
+        url: "/",
+    },
+    {
+        name: "Coaches",
+        url: "/coaches",
+    },
+    {
+        name: "Students",
+        url: "/students",
+    },
+];
+
+export default function Navigation() {
+
+    return (
+        <div>
+            <ul className="flex flex-row gap-5">
+                {links.map((link, index) => (
+                    <li key={index}>
+                        <Link href={link.url} className="underline hover:text-blue-600">
+                            {link.name}
+                        </Link>
+                    </li>
+                ))}
+            </ul>
+        </div>
+    );
+}

@@ -1,31 +1,27 @@
-import { PrismaClient } from "@prisma/client";
+"use server";
 
-export default function Slots({
+import { fetchCoach } from "@/lib/actions/coach";
+import Slots from "@/components/slots/slots";
+import { Slot } from "@/lib/types/types";
+
+export default async function Page({
     params,
     searchParams,
 }: {
-    params: { id: number; };
+    params: { id: string; };
     searchParams: { [key: string]: string | string[] | undefined };
 }) {
-    const prisma = new PrismaClient();
+    const coach = await fetchCoach(params.id);
+    if (!coach) return;
 
-    async function createUser() {
-        await prisma.slot.create({
-            data: {
-                coachId: Number(params.id),
-                startTime: new Date('2022-03-20T09:00:00Z'),
-                endTime: new Date('2022-03-20T10:00:00Z'),
-            },
-        })
-    
-        const slots = await prisma.slot.findMany()
-
-        console.log(slots)
+    async function handleCreateSlot(slot: Slot) {
+        "use server";
+        
+        console.log("server: ")
+        console.log(slot)
     }
 
-    createUser();
-
     return (
-        <div>List of slots for coach id: {params.id}</div>
+        <Slots coach={coach} createSlot={handleCreateSlot} />
     );
 }

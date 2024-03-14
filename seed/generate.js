@@ -1,7 +1,5 @@
-const { PrismaClient } = require("@prisma/client");
 const data = require("./data.json");
-
-const prisma = new PrismaClient();
+const prisma = require("../lib/third-party/third-party");
 
 async function seed() {
     const { coaches, students } = data;
@@ -15,8 +13,6 @@ async function seed() {
         console.log("Seed data inserted successfully.")
     } catch(error) {
         console.error(`Error seeding data: ${error}`)
-    } finally {
-        await prisma.$disconnect;
     }
 }
 

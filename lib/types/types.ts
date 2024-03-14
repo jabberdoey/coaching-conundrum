@@ -9,3 +9,9 @@ export type Student = {
     name: string;
     phone: string;
 }
+
+export type Slot = {
+    coachId: number;
+    startTime: Date;
+    endTime: Date;
+}
