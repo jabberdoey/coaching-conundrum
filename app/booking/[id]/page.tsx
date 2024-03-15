@@ -21,7 +21,7 @@ export default async function Page({
     }
 
     const slots = await fetchSlotsWithCoach();
-    const bookingsWithSlotAndStudent = await fetchBookingsWithSlotAndStudent();
+    const bookings = await fetchBookingsWithSlotAndStudent();
 
     async function handleCreateBooking(slot: SlotWithCoach) {
         "use server";
@@ -39,7 +39,7 @@ export default async function Page({
         <Booking
             student={student}
             slots={slots}
-            bookings={bookingsWithSlotAndStudent}
+            bookings={bookings}
             createBooking={handleCreateBooking}
         />
     );

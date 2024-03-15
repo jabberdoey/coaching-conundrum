@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { getDate, getDaySlots, getTimeInHourFormat } from "@/lib/utils/date";
-import { Booking, BookingsWithSlotAndStudent, Coach, Slot } from "@/lib/types/types";
+import { BookingsWithSlotAndStudent, Coach, Slot } from "@/lib/types/types";
 import clsx from "clsx";
 
 export default function Slots({
