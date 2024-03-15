@@ -64,6 +64,7 @@ export default function Booking({
                             const reservedSlot = bookings.find((b) =>
                                 getTimeInHourFormat(b.slot.startTime) === getTimeInHourFormat(slot.startTime)
                                 && getTimeInHourFormat(b.slot.endTime) === getTimeInHourFormat(slot.endTime)
+                                && b.slot.id === slot.id
                             );
 
                             return (
