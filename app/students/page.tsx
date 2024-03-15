@@ -18,7 +18,7 @@ export default async function Page() {
 
     return (
         <div>
-            <h2 className="my-5 text-2xl font-bold">Students:</h2>
+            <h2 className="my-5 text-2xl font-bold">Select a student:</h2>
             <ul className="flex flex-row gap-5">
                 {students.map((student) => (
                     <li key={student.id} className="w-[200px] h-[200px] hover:bg-gray-200">

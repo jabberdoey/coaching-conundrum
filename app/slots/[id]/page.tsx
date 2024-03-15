@@ -3,6 +3,9 @@
 import { fetchCoach } from "@/lib/actions/coach";
 import Slots from "@/components/slots/slots";
 import { Slot } from "@/lib/types/types";
+import { createSlot, fetchSlots } from "@/lib/actions/slots";
+import { redirect } from "next/navigation";
+import Error from "@/components/error/error";
 
 export default async function Page({
     params,
@@ -12,16 +15,25 @@ export default async function Page({
     searchParams: { [key: string]: string | string[] | undefined };
 }) {
     const coach = await fetchCoach(params.id);
-    if (!coach) return;
+    if (!coach) {
+        return (
+            <Error message="Coach not found!" />
+        );
+    }
+
+    const slots = await fetchSlots(Number(coach.id));
 
     async function handleCreateSlot(slot: Slot) {
         "use server";
-        
-        console.log("server: ")
-        console.log(slot)
+        createSlot(slot);
+        redirect(`/slots/${slot.coachId}`);
     }
 
     return (
-        <Slots coach={coach} createSlot={handleCreateSlot} />
+        <Slots
+            coach={coach}
+            slots={slots}
+            createSlot={handleCreateSlot}
+        />
     );
 }

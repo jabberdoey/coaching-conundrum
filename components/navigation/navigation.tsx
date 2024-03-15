@@ -1,21 +1,8 @@
 import Link from "next/link";
-
-const links = [
-    {
-        name: "Home",
-        url: "/",
-    },
-    {
-        name: "Coaches",
-        url: "/coaches",
-    },
-    {
-        name: "Students",
-        url: "/students",
-    },
-];
+import constants from "@/constants.json";
 
 export default function Navigation() {
+    const { links } = constants;
 
     return (
         <div>
