@@ -19,7 +19,10 @@ export default function Booking({
     const [selectedSlot, setSelectedSlot] = useState<SlotWithCoach | null>(null);
     const [selectedBooking, setSelectedBooking] = useState<SlotWithCoach | null>(null);
 
-    const filteredBookings = bookings.filter((booking) => slots.find((slot) => booking.slot.coachId === slot.coachId));
+    const filteredBookings = bookings.filter((booking) => slots.find((slot) => 
+        booking.slot.coachId === slot.coachId
+        && student.id === booking.student.id
+    ));
 
     function selectSlot(slot: SlotWithCoach) {
         setSelectedSlot(slot);
