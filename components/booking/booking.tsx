@@ -1,37 +1,38 @@
 "use client";
 
 import { useState } from "react";
-import { getDate, getDaySlots, getTimeInHourFormat } from "@/lib/utils/date";
-import { Coach, Slot } from "@/lib/types/types";
+import { getDate, getTimeInHourFormat } from "@/lib/utils/date";
+import { BookingWithSlot, Coach, Slot, Student, SlotWithCoach } from "@/lib/types/types";
 import clsx from "clsx";
 
-export default function Slots({
-    coach,
+export default function Booking({
+    student,
     slots,
-    createSlot,
+    bookings,
+    createBooking,
 }: {
-    coach: Coach;
-    slots: Slot[],
-    createSlot: (slot: Slot) => void;
+    student: Student;
+    slots: SlotWithCoach[],
+    bookings: BookingWithSlot[],
+    createBooking: (slot: SlotWithCoach) => void;
 }) {
-    const [selectedSlot, setSelectedSlot] = useState<Slot | null>(null);
-    const daySlots = getDaySlots(new Date());
+    const [selectedSlot, setSelectedSlot] = useState<SlotWithCoach | null>(null);
 
-    function selectSlot(slot: Slot) {
+    function selectSlot(slot: SlotWithCoach) {
         setSelectedSlot(slot);
     }
 
     function renderConfirmPrompt() {
         if (!selectedSlot) return;
 
-        const { startTime, endTime } = selectedSlot;
+        const { coach, startTime, endTime } = selectedSlot;
         if (!startTime || !endTime) return;
 
         return (
             <div className="z-50 mx-auto w-1/4 fixed inset-x-0 top-10">
                 <div className="border border-solid border-8 border-slate-600 bg-slate-100 fixed w-[400px] align-middle border p-8 bg-white z-10">
                     <div className="mb-5">
-                        Make yourself available to students on <span className="font-bold">{getDate(new Date())}</span> at <span className="font-bold">{getTimeInHourFormat(startTime)} - {getTimeInHourFormat(endTime)}</span>?
+                        Confirm booking on <span className="font-bold">{getDate(new Date())}</span> at <span className="font-bold">{getTimeInHourFormat(startTime)} - {getTimeInHourFormat(endTime)}</span> with <span className="font-bold">{coach.name}</span>?
                     </div>
                     <div className="flex flex-row flex-row-reverse gap-2">
                         <button
@@ -40,7 +41,7 @@ export default function Slots({
                         >No</button>
                         <button
                             onClick={() => {
-                                createSlot({ ...selectedSlot });
+                                createBooking({ ...selectedSlot });
                                 setSelectedSlot(null);
                             }}
                             className="border border-solid border-black py-2 px-5 hover:bg-black hover:text-white"
@@ -54,30 +55,28 @@ export default function Slots({
     return (
         <div>
             {selectedSlot && renderConfirmPrompt()}
-            <h2 className="my-5 text-2xl font-bold">{coach.name} ({coach.phone})</h2>
+            <h2 className="my-5 text-2xl font-bold">{student.name} ({student.phone})</h2>
             <div>
-                <p className="text-lg my-5">Make yourself available to students on <span className="font-bold">{getDate(new Date())}</span> at:</p>
+                <p className="text-lg my-5">Book an available time slot with a coach:</p>
                 <ul className="gap-5 flex flex-col">
-                    {daySlots.map((slot, index) => {
-                        const isSlotTaken = slots.find((s) =>
-                            getTimeInHourFormat(s.startTime) === getTimeInHourFormat(slot.startTime)
-                            && getTimeInHourFormat(s.endTime) === getTimeInHourFormat(slot.endTime)
+                    {slots.map((slot, index) => {
+                        const isSlotTaken = bookings.find((b) =>
+                            getTimeInHourFormat(b.slot.startTime) === getTimeInHourFormat(slot.startTime)
+                            && getTimeInHourFormat(b.slot.endTime) === getTimeInHourFormat(slot.endTime)
                         );
 
                         return (
                             <li key={index}>
                                 <div
                                     className={clsx(
-                                        "w-full h-[100px] flex border justify-center items-center p-5",
+                                        "w-full h-[100px] flex-col border justify-center items-center p-5",
                                         !isSlotTaken && "cursor-pointer hover:bg-gray-200",
                                         isSlotTaken && "relative bg-gray-200",
                                     )}
                                     onClick={() => {
-                                        if (isSlotTaken) return;
                                         selectSlot({
                                             ...slot,
-                                            id: 0,
-                                            coachId: Number(coach.id),
+                                            coachId: Number(slot.coach.id),
                                         });
                                     }}
                                 >
@@ -86,7 +85,8 @@ export default function Slots({
                                             <p className="font-bold text-2xl">Not available</p>
                                         </div>
                                     )}
-                                    {`${getTimeInHourFormat(slot.startTime)} - ${getTimeInHourFormat(slot.endTime)}`}
+                                    <div className="font-bold text-center items-center">{slot.coach.name}</div>
+                                    <div className="text-center items-center">{`${getTimeInHourFormat(slot.startTime)} - ${getTimeInHourFormat(slot.endTime)}`}</div>
                                 </div>
                             </li>
                         );

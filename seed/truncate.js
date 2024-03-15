@@ -1,4 +1,6 @@
-const prisma = require("../lib/third-party/third-party");
+const { PrismaClient } = require("@prisma/client");
+
+const prisma = new PrismaClient();
 
 async function truncate() {
     const tables = [
@@ -15,6 +17,8 @@ async function truncate() {
         }
     } catch(error) {
         console.error(`Error performing TRUNCATE operation: ${error}`)
+    } finally {
+        prisma.$disconnect;
     }
 }
 

@@ -29,6 +29,7 @@ model Student {
 
 model Booking {
   id          Int       @id @default(autoincrement())
+  slot        Slot      @relation(fields: [slotId], references: [id])
   slotId      Int
   student     Student   @relation(fields: [studentId], references: [id])
   studentId   Int
@@ -41,6 +42,7 @@ model Slot {
   coachId   Int
   startTime DateTime
   endTime   DateTime
+  bookings  Booking[]
 }
 
 model Feedback {

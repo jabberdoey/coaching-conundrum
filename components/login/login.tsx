@@ -6,7 +6,7 @@ export default async function Login() {
 
     return (
         <div>
-            <h2 className="my-5 text-2xl font-bold">Choose a login option:</h2>
+            <h2 className="my-5 text-2xl font-bold">Select a login:</h2>
             <ul className="flex flex-row gap-5">
                 {logins.map((login, index) => (
                     <li key={index} className="w-[200px] h-[200px] hover:bg-gray-200">
