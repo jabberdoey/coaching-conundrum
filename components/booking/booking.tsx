@@ -67,6 +67,7 @@ export default function Booking({
 
                             return (
                                 <li
+                                    key={booking.id}
                                     className="w-full h-[100px] border gap-2 cursor-pointer hover:bg-gray-200 flex flex-row justify-center items-center p-5"
                                     onClick={() => { setSelectedBooking(slot) }}
                                 >
