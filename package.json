@@ -8,7 +8,7 @@
     "start": "next start",
     "lint": "next lint",
     "schema:update": "npx prisma generate",
-    "seed:refresh": "npm run seed:truncate; npm run seed:generate;",
+    "seed:restart": "npm run seed:truncate; npm run seed:generate;",
     "seed:generate": "node seed/generate.js",
     "seed:truncate": "node seed/truncate.js"
   },

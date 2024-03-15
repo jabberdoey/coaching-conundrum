@@ -14,26 +14,26 @@ datasource db {
 }
 
 model Coach {
-  id    Int     @id @default(autoincrement())
+  id    Int    @id @default(autoincrement())
   name  String
   phone String
   slots Slot[]
 }
 
 model Student {
-  id        Int     @id @default(autoincrement())
-  name      String
-  phone     String
-  bookings  Booking[]
+  id       Int       @id @default(autoincrement())
+  name     String
+  phone    String
+  bookings Booking[]
 }
 
 model Booking {
-  id          Int       @id @default(autoincrement())
-  slot        Slot      @relation(fields: [slotId], references: [id])
-  slotId      Int
-  student     Student   @relation(fields: [studentId], references: [id])
-  studentId   Int
-  feedback    Feedback?
+  id        Int       @id @default(autoincrement())
+  slot      Slot      @relation(fields: [slotId], references: [id])
+  slotId    Int
+  student   Student   @relation(fields: [studentId], references: [id])
+  studentId Int
+  feedback  Feedback?
 }
 
 model Slot {
@@ -42,13 +42,13 @@ model Slot {
   coachId   Int
   startTime DateTime
   endTime   DateTime
-  bookings  Booking[]
+  Booking   Booking[]
 }
 
 model Feedback {
-  id                    Int         @id @default(autoincrement())
-  booking               Booking     @relation(fields: [bookingId], references: [id])
-  bookingId             Int         @unique
-  satisfaction          Int
-  notes                 String
+  id           Int     @id @default(autoincrement())
+  booking      Booking @relation(fields: [bookingId], references: [id])
+  bookingId    Int     @unique
+  satisfaction Int
+  notes        String
 }

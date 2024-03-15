@@ -2,7 +2,7 @@
 
 import { redirect } from "next/navigation";
 import { fetchStudent } from "@/lib/actions/student";
-import { createBooking, fetchBookingWithSlot } from "@/lib/actions/booking";
+import { createBooking, fetchBookingsWithSlotAndStudent } from "@/lib/actions/booking";
 import { fetchSlotsWithCoach } from "@/lib/actions/slots";
 import { SlotWithCoach } from "@/lib/types/types";
 import Booking from "@/components/booking/booking";
@@ -21,7 +21,7 @@ export default async function Page({
     }
 
     const slots = await fetchSlotsWithCoach();
-    const bookings = await fetchBookingWithSlot();
+    const bookingsWithSlotAndStudent = await fetchBookingsWithSlotAndStudent();
 
     async function handleCreateBooking(slot: SlotWithCoach) {
         "use server";
@@ -29,7 +29,7 @@ export default async function Page({
         if (!student) return;
 
         createBooking({
-            slotId: slot.coach.id,
+            slotId: slot.id,
             studentId: student.id,
         });
         redirect(`/booking/${student.id}`);
@@ -39,7 +39,7 @@ export default async function Page({
         <Booking
             student={student}
             slots={slots}
-            bookings={bookings}
+            bookings={bookingsWithSlotAndStudent}
             createBooking={handleCreateBooking}
         />
     );

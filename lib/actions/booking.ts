@@ -1,11 +1,14 @@
 import { prisma } from "@/lib/third-party/third-party";
 
-export async function fetchBookingWithSlot() {
-    return await prisma.booking.findMany({
+export async function fetchBookingsWithSlotAndStudent() {
+    const bookings = await prisma.booking.findMany({
         include: {
             slot: true,
+            student: true,
         },
     });
+
+    return bookings;
 }
 
 export async function createBooking({

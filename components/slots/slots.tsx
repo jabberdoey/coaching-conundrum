@@ -59,7 +59,7 @@ export default function Slots({
                 <p className="text-lg my-5">Make yourself available to students on <span className="font-bold">{getDate(new Date())}</span> at:</p>
                 <ul className="gap-5 flex flex-col">
                     {daySlots.map((slot, index) => {
-                        const isSlotTaken = slots.find((s) =>
+                        const reservedSlot = slots.find((s) =>
                             getTimeInHourFormat(s.startTime) === getTimeInHourFormat(slot.startTime)
                             && getTimeInHourFormat(s.endTime) === getTimeInHourFormat(slot.endTime)
                         );
@@ -69,11 +69,11 @@ export default function Slots({
                                 <div
                                     className={clsx(
                                         "w-full h-[100px] flex border justify-center items-center p-5",
-                                        !isSlotTaken && "cursor-pointer hover:bg-gray-200",
-                                        isSlotTaken && "relative bg-gray-200",
+                                        !reservedSlot && "cursor-pointer hover:bg-gray-200",
+                                        reservedSlot && "relative bg-gray-200",
                                     )}
                                     onClick={() => {
-                                        if (isSlotTaken) return;
+                                        if (reservedSlot) return;
                                         selectSlot({
                                             ...slot,
                                             id: 0,
@@ -81,7 +81,7 @@ export default function Slots({
                                         });
                                     }}
                                 >
-                                    {isSlotTaken && (
+                                    {reservedSlot && (
                                         <div className="absolute z-10 w-full h-full text-center flex border border-lime-900 justify-center items-center p-5 bg-rose-300">
                                             <p className="font-bold text-2xl">Not available</p>
                                         </div>

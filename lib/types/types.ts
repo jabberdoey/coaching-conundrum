@@ -25,4 +25,4 @@ export type Booking = {
 
 export type SlotWithCoach = (Slot & { coach: Coach; });
 
-export type BookingWithSlot = (Booking & { slot: Slot; });
+export type BookingsWithSlotAndStudent = (Booking & { slot: Slot; student: Student; });
