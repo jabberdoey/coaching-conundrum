@@ -142,6 +142,7 @@ export default function Booking({
                                             reservedSlot && "relative bg-gray-200",
                                         )}
                                         onClick={() => {
+                                            if (reservedSlot) return;
                                             selectSlot({
                                                 ...slot,
                                                 coachId: Number(slot.coach.id),
