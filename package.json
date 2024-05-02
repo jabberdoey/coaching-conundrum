@@ -8,9 +8,12 @@
     "start": "next start",
     "lint": "next lint",
     "schema:generate": "npx prisma generate",
+    "schema:deploy": "npx prisma migrate deploy",
+    "schema:restart": "npm run schema:generate; npm run schema:deploy;",
     "seed:restart": "npm run seed:truncate; npm run seed:generate;",
     "seed:generate": "node seed/generate.js",
-    "seed:truncate": "node seed/truncate.js"
+    "seed:truncate": "node seed/truncate.js",
+    "refresh:database": "npm run schema:restart; npm run seed:restart;"
   },
   "dependencies": {
     "@prisma/adapter-pg": "^5.12.1",

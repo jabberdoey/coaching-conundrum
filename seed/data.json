@@ -1,56 +1,16 @@
 {
     "coaches": [
-        {
-            "name": "Bob Smith",
-            "phone": "123-456-7890",
-            "imageUrl": "/avatars/bob-smith.jpg"
-        },
-        {
-            "name": "John Doe",
-            "phone": "234-567-8901",
-            "imageUrl": "/avatars/john-doe.jpg"
-        },
-        {
-            "name": "Alice Brown",
-            "phone": "345-678-9012",
-            "imageUrl": "/avatars/alice-brown.jpg"
-        },
-        {
-            "name": "Robert White",
-            "phone": "456-789-0123",
-            "imageUrl": "/avatars/robert-white.jpg"
-        },
-        {
-            "name": "Sarah Davis",
-            "phone": "567-890-1234",
-            "imageUrl": "/avatars/sarah-davis.jpg"
-        }
+        { "name": "Bob Smith", "phone": "123-456-7890" },
+        { "name": "John Doe", "phone": "234-567-8901" },
+        { "name": "Alice Brown", "phone": "345-678-9012" },
+        { "name": "Robert White", "phone": "456-789-0123" },
+        { "name": "Sarah Davis", "phone": "567-890-1234" }
     ],
     "students": [
-        {
-            "name": "John Williams",
-            "phone": "678-901-2345",
-            "imageUrl": "/avatars/john-williams.jpg"
-        },
-        {
-            "name": "Michael Jones",
-            "phone": "789-012-3456",
-            "imageUrl": "/avatars/michael-jones"
-        },
-        {
-            "name": "Daniel Miller",
-            "phone": "890-123-4567",
-            "imageUrl": "/avatars/daniel-miller.jpg"
-        },
-        {
-            "name": "Emily Johnson",
-            "phone": "901-234-5678",
-            "imageUrl": "/avatars/emily-johnson.jpg"
-        },
-        {
-            "name": "Sam Kane",
-            "phone": "012-345-6789",
-            "imageUrl": "/avatars/sam-kane.jpg"
-        }
+        { "name": "John Williams", "phone": "678-901-2345" },
+        { "name": "Michael Jones", "phone": "789-012-3456" },
+        { "name": "Daniel Miller", "phone": "890-123-4567" },
+        { "name": "Emily Johnson", "phone": "901-234-5678" },
+        { "name": "Sam Kane", "phone": "012-345-6789" }
     ]
 }
