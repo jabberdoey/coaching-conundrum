@@ -6,7 +6,7 @@ export default async function Login() {
     const { logins } = constants;
 
     return (
-        <div className="flex flex-col gap-5 items-center">
+        <div className="flex flex-col gap-10 items-center">
             <h2 className="text-xl font-semibold text-slate-800">Select a login:</h2>
             <ul className="flex flex-row gap-5">
                 {logins.map((login, index) => (
@@ -25,7 +25,7 @@ export default async function Login() {
                                 width={150}
                                 height={150}
                             />
-                            <div className="text-center text-xs uppercase font-bold text-slate-900 transition duration-300 ease-in-out group-hover:text-white">{login.name}</div>
+                            <div className="text-center text-base uppercase font-bold text-slate-900 transition duration-300 ease-in-out group-hover:text-white">{login.name}</div>
                         </Link>
                     </li>
                 ))}

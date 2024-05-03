@@ -18,7 +18,7 @@ export default async function Page() {
     const students = await fetchStudents();
 
     return (
-        <div className="flex flex-col gap-5 items-center">
+        <div className="flex flex-col gap-10 items-center">
             <h2 className="text-xl font-semibold text-slate-800">Select a student:</h2>
             <ul className="flex flex-row gap-5">
                 {students.map((student) => (
@@ -37,7 +37,7 @@ export default async function Page() {
                                 width={150}
                                 height={150}
                             />
-                            <div className="text-center text-xs uppercase font-bold text-slate-900 transition duration-300 ease-in-out group-hover:text-white">{student.name}</div>
+                            <div className="text-center text-base font-bold text-slate-900 transition duration-300 ease-in-out group-hover:text-white">{student.name}</div>
                         </Link>
                     </li>
                 ))}
