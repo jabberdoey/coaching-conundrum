@@ -6,7 +6,7 @@ export default function Navigation() {
 
     return (
         <div>
-            <ul className="flex flex-row gap-5">
+            <ul className="flex flex-row gap-5 justify-center">
                 {links.map((link, index) => (
                     <li key={index}>
                         <Link href={link.url} className="underline hover:text-blue-600">

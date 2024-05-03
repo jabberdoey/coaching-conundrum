@@ -18,9 +18,11 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-        <div className="p-5">
-          <Navigation />
-          {children}
+        <div className="container mx-auto">
+          <div className="flex flex-col items-center justify-center h-screen">
+            <Navigation />
+            {children}
+          </div>
         </div>
       </body>
     </html>

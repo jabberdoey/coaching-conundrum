@@ -15,12 +15,14 @@
     ],
     "logins": [
         {
-            "name": "Coaches",
-            "url": "/coaches"
+            "name": "Coach",
+            "url": "/coaches",
+            "imageUrl": "/avatars/coach.jpg"
         },
         {
-            "name": "Students",
-            "url": "/students"
+            "name": "Student",
+            "url": "/students",
+            "imageUrl": "/avatars/student.jpg"
         }
     ]
 }
