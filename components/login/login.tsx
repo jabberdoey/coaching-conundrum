@@ -6,26 +6,26 @@ export default async function Login() {
     const { logins } = constants;
 
     return (
-        <div className="mt-5 flex flex-col gap-5 items-center">
-            <h2 className="text-base font-medium">Log in as:</h2>
-            <ul className="flex flex-row">
+        <div className="flex flex-col gap-5 items-center">
+            <h2 className="text-xl font-semibold text-slate-800">Select a login:</h2>
+            <ul className="flex flex-row gap-5">
                 {logins.map((login, index) => (
                     <li
                         className="group"
                         key={index}
                     >
                         <Link
-                            className="flex flex-col gap-5 items-center p-5 rounded-xl transition duration-300 ease-in-out group-hover:bg-slate-200"
+                            className="drop-shadow-md bg-white border border-slate-200 flex flex-col gap-5 items-center p-5 rounded-xl transition duration-200 ease-in-out group-hover:-translate-y-2 group-hover:bg-orange-500 h-full"
                             href={login.url}
                         >
                             <Image
-                                className="p-1 bg-white border border-slate-200 drop-shadow-md rounded-full transition duration-300 group-hover:-translate-y-2"
+                                className="p-2 bg-white rounded-full transition duration-300 ease-in-out group-hover:drop-shadow-md"
                                 alt={login.name}
                                 src={login.imageUrl}
                                 width={150}
                                 height={150}
                             />
-                            <div className="text-sm font-medium text-slate-800">{login.name}</div>
+                            <div className="text-center text-xs uppercase font-bold text-slate-900 transition duration-300 ease-in-out group-hover:text-white">{login.name}</div>
                         </Link>
                     </li>
                 ))}

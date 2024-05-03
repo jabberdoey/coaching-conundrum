@@ -3,14 +3,6 @@
         {
             "name": "Home",
             "url": "/"
-        },
-        {
-            "name": "Coaches",
-            "url": "/coaches"
-        },
-        {
-            "name": "Students",
-            "url": "/students"
         }
     ],
     "logins": [
