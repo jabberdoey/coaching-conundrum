@@ -27,17 +27,21 @@ export default async function Page() {
                         className="group"
                     >
                         <Link
-                            className="drop-shadow-md bg-white border border-slate-200 flex flex-col gap-5 items-center p-5 rounded-xl transition duration-200 ease-in-out group-hover:-translate-y-2 group-hover:bg-orange-500 h-full"
+                            className="drop-shadow-md bg-slate-100 border-2 border-slate-200 flex flex-col gap-5 items-center p-5 rounded-xl transition duration-200 ease-in-out group-hover:-translate-y-2 group-hover:bg-orange-500 h-full group-hover:border-orange-700"
                             href={`/slots/${coach.id}`}
                         >
                             <Image
-                                className="p-2 bg-white rounded-full transition duration-300 ease-in-out group-hover:drop-shadow-md"
+                                className="p-1 bg-white rounded-full"
                                 alt={`Coach ${coach.name}`}
                                 src={`/avatars/${coach.name.toLowerCase().replace(" ", "-")}.jpg`}
                                 width={150}
                                 height={150}
                             />
-                            <div className="text-center text-base font-bold text-slate-900 transition duration-300 ease-in-out group-hover:text-white">{coach.name}</div>
+                            <div
+                                className="text-center text-md font-medium text-slate-500 transition duration-300 ease-in-out group-hover:text-white"
+                            >
+                                {coach.name}
+                            </div>
                         </Link>
                     </li>
                 ))}
