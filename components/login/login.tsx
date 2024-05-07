@@ -19,7 +19,7 @@ export default async function Login() {
                             href={login.url}
                         >
                             <Image
-                                className="p-1 bg-white rounded-full"
+                                className="p-2 bg-white rounded-full"
                                 alt={login.name}
                                 src={login.imageUrl}
                                 width={150}
