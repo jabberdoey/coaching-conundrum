@@ -114,7 +114,7 @@ export default function Slots({
     }
 
     return (
-        <div className="flex flex-col items-center justify-center border">
+        <div className="flex flex-col items-center justify-center">
             {selectedSlot && renderConfirmPrompt()}
             {selectedBooking && renderBookingDetailsPrompt()}
             {filteredBookings.length ? renderBookings(filteredBookings) : null}

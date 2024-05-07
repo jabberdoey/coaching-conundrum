@@ -121,13 +121,13 @@ export default function Booking({
     }
 
     return (
-        <div className="flex flex-col items-center justify-center border">
+        <div className="flex flex-col items-center justify-center">
             {selectedSlot && renderConfirmPrompt()}
             {selectedBooking && renderBookingDetailsPrompt()}
-            {filteredBookings.length ? renderBookings(filteredBookings) : null}
+            {/* {filteredBookings.length ? renderBookings(filteredBookings) : null} */}
 
             {slots.length ? (
-                <div className="lg:w-[500px] drop-shadow-md bg-slate-100 border-2 border-slate-200 flex flex-col gap-4 items-center p-5 rounded-xl">
+                <div className="lg:w-[500px] relative drop-shadow-md bg-slate-100 border-2 border-slate-200 flex flex-col gap-4 items-center p-5 rounded-xl">
                     <Image
                         className="-my-16 mb-0 p-2 drop-shadow-md bg-white rounded-full"
                         alt={`Coach ${student.name}`}
@@ -137,47 +137,67 @@ export default function Booking({
                     />
                     <h1 className="text-2xl font-semibold text-slate-800">{student.name}</h1>
                     <div className="flex flex-col w-full px-10 pt-5 pb-10 items-center bg-white rounded-lg border border-slate-200">
-                        <p className="text-md text-slate-600 my-5">
-                            Book a slot with a coach:
-                        </p>
-                        <div className="flex w-full h-[130px] overflow-y-scroll py-[2px]">
-                            <ul className="flex flex-col w-full">
-                                {slots.map((slot, index) => {
-                                    const reservedSlot = bookings.find((b) =>
-                                        getTimeInHourFormat(b.slot.startTime) === getTimeInHourFormat(slot.startTime)
-                                        && getTimeInHourFormat(b.slot.endTime) === getTimeInHourFormat(slot.endTime)
-                                        && b.slot.id === slot.id
-                                    );
+                        {filteredBookings.length
+                            ? (
+                                <div className="flex gap-2">
+                                    <button
+                                        className="p-2 bg-slate-300 text-slate-600 rounded-lg text-xs uppercase font-semibold"
+                                    >
+                                        Slots
+                                    </button>
+                                    <button
+                                        className="p-2 bg-slate-300 text-slate-600 rounded-lg text-xs uppercase font-semibold"
+                                    >
+                                        Bookings
+                                    </button>
+                                </div>
+                            )
+                            : (
+                                <>
+                                    <p className="text-md text-slate-600 my-5">
+                                        Book a slot with a coach:
+                                    </p>
+                                    <div className="flex w-full h-[130px] overflow-y-scroll py-[2px]">
+                                        <ul className="flex flex-col w-full">
+                                            {slots.map((slot, index) => {
+                                                const reservedSlot = bookings.find((b) =>
+                                                    getTimeInHourFormat(b.slot.startTime) === getTimeInHourFormat(slot.startTime)
+                                                    && getTimeInHourFormat(b.slot.endTime) === getTimeInHourFormat(slot.endTime)
+                                                    && b.slot.id === slot.id
+                                                );
 
-                                    return (
-                                        <li
-                                            key={index}
-                                            className={clsx(
-                                                "relative flex flex-row w-full border border-slate-200 rounded-sm justify-center items-center p-2 text-sm",
-                                                !reservedSlot && "cursor-pointer hover:bg-orange-500 hover:border-orange-700 hover:text-white",
-                                                reservedSlot && "relative bg-gray-200",
-                                                index % 2 !== 0 && "bg-white",
-                                                index % 2 === 0 && "bg-slate-100",
-                                            )}
-                                            onClick={() => {
-                                                if (reservedSlot) return;
-                                                selectSlot({
-                                                    ...slot,
-                                                    coachId: Number(slot.coach.id),
-                                                });
-                                            }}
-                                        >
-                                            {reservedSlot && (
-                                                <div className="absolute z-10 w-full h-full text-center rounded-sm flex border border-lime-900 justify-center items-center p-5 bg-rose-300">
-                                                    <p className="font-bold text-md">Reserved by {reservedSlot.student.name}</p>
-                                                </div>
-                                            )}
-                                            {`${getTimeInHourFormat(slot.startTime)} - ${getTimeInHourFormat(slot.endTime)}`}&nbsp;with&nbsp;<span className="font-semibold">{slot.coach.name}</span>
-                                        </li>
-                                    );
-                                })}
-                            </ul>
-                        </div>
+                                                return (
+                                                    <li
+                                                        key={index}
+                                                        className={clsx(
+                                                            "relative flex flex-row w-full border border-slate-200 rounded-sm justify-center items-center p-2 text-sm",
+                                                            !reservedSlot && "cursor-pointer hover:bg-orange-500 hover:border-orange-700 hover:text-white",
+                                                            reservedSlot && "relative bg-gray-200",
+                                                            index % 2 !== 0 && "bg-white",
+                                                            index % 2 === 0 && "bg-slate-100",
+                                                        )}
+                                                        onClick={() => {
+                                                            if (reservedSlot) return;
+                                                            selectSlot({
+                                                                ...slot,
+                                                                coachId: Number(slot.coach.id),
+                                                            });
+                                                        }}
+                                                    >
+                                                        {reservedSlot && (
+                                                            <div className="absolute z-10 w-full h-full text-center rounded-sm flex border border-lime-900 justify-center items-center p-5 bg-rose-300">
+                                                                <p className="font-bold text-md">Reserved by {reservedSlot.student.name}</p>
+                                                            </div>
+                                                        )}
+                                                        {`${getTimeInHourFormat(slot.startTime)} - ${getTimeInHourFormat(slot.endTime)}`}&nbsp;with&nbsp;<span className="font-semibold">{slot.coach.name}</span>
+                                                    </li>
+                                                );
+                                            })}
+                                        </ul>
+                                    </div>
+                                </>
+                            )
+                        }
                     </div>
                 </div>
             ) : (
