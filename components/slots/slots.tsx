@@ -117,21 +117,22 @@ export default function Slots({
         <div className="flex flex-col items-center justify-center border">
             {selectedSlot && renderConfirmPrompt()}
             {selectedBooking && renderBookingDetailsPrompt()}
+            {filteredBookings.length ? renderBookings(filteredBookings) : null}
 
-            <div className="lg:w-[150%] drop-shadow-md bg-slate-100 border-2 border-slate-200 flex flex-col gap-4 items-center p-5 rounded-xl">
+            <div className="lg:w-[500px] drop-shadow-md bg-slate-100 border-2 border-slate-200 flex flex-col gap-4 items-center p-5 rounded-xl">
                 <Image
-                    className="-my-24 mb-0 p-2 drop-shadow-md bg-white rounded-full"
+                    className="-my-16 mb-0 p-2 drop-shadow-md bg-white rounded-full"
                     alt={`Coach ${coach.name}`}
                     src={`/avatars/${coach.name.toLowerCase().replace(" ", "-")}.jpg`}
-                    width={150}
-                    height={150}
+                    width={125}
+                    height={125}
                 />
                 <h1 className="text-2xl font-semibold text-slate-800">{coach.name}</h1>
                 <div className="flex flex-col w-full px-10 pt-5 pb-10 items-center bg-white rounded-lg border border-slate-200">
                     <p className="text-md text-slate-600 my-5">
                         <span className="font-bold text-slate-800">{getDate(new Date())}</span> availability:
                     </p>
-                    <div className="flex w-full h-[130px] overflow-y-scroll py-[2px]">
+                    <div className="flex w-full h-[135px] overflow-y-scroll py-[2px]">
                         <ul className="flex flex-col w-full">
                             {daySlots.map((slot, index) => {
                                 const reservedSlot = slots.find((s) =>
@@ -171,7 +172,6 @@ export default function Slots({
                     </div>
                 </div>
             </div>
-            {filteredBookings.length ? renderBookings(filteredBookings) : null}
         </div>
     );
 }

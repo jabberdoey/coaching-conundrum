@@ -1,27 +1,39 @@
+"use client";
+
 import Link from "next/link";
 import constants from "@/constants.json";
-import Home from "@/components/icons/home";
+import { usePathname } from "next/navigation";
+import clsx from "clsx";
 
 export default function Navigation() {
     const { links } = constants;
+    const pathname = usePathname();
+    const [path, id] = pathname.split("/").filter(Boolean);
 
     return (
-        <div className="mb-10">
-            <ul className="flex flex-row justify-center">
-                {links.map((link, index) => (
-                    <li
-                        className="group"
-                        key={index}
-                    >
-                        <Link href={link.url} className="p-1 px-2 bg-slate-200 text-slate-800 rounded-lg flex flex-row text-sm uppercase font-semibold transition duration-300 ease-in-out group-hover:bg-slate-600">
-                            <span className="flex flex-row gap-2 items-center justify-center p-1 rounded-lg transition duration-300 ease-in-out group-hover:text-slate-300">
-                                <Home />
-                                <span>Home</span>
-                            </span>
-                        </Link>
-                    </li>
-                ))}
-            </ul>
+        <div className="flex items-center justify-center">
+            <div className="fixed mt-20">
+                <ul className="flex flex-row justify-center gap-3">
+                    {links.map((link, index) => (
+                        <li
+                            className="group"
+                            key={index}
+                        >
+                            <Link
+                                href={link.url}
+                                className={clsx(
+                                    "p-2 text-slate-800 border border-transparent rounded-lg flex flex-row text-xs uppercase font-semibold transition duration-300 ease-in-out",
+                                    pathname === link.url
+                                        ? "bg-orange-500 border-orange-700 text-white group-hover:text-white"
+                                        : "group-hover:text-orange-700",
+                                )}
+                            >
+                                <span>{link.name}</span>
+                            </Link>
+                        </li>
+                    ))}
+                </ul>
+            </div>
         </div>
     );
 }
