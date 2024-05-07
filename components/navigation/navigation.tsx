@@ -22,9 +22,9 @@ export default function Navigation() {
                             <Link
                                 href={link.url}
                                 className={clsx(
-                                    "p-2 text-slate-800 border border-transparent rounded-lg flex flex-row text-xs uppercase font-semibold transition duration-300 ease-in-out",
+                                    "p-2 text-slate-800 rounded-lg flex flex-row text-xs uppercase font-semibold transition duration-300 ease-in-out",
                                     pathname === link.url
-                                        ? "bg-orange-500 border-orange-700 text-white group-hover:text-white"
+                                        ? "bg-orange-500 text-white group-hover:text-white"
                                         : "group-hover:text-orange-700",
                                 )}
                             >
