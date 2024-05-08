@@ -18,9 +18,9 @@ export default async function Page() {
     const students = await fetchStudents();
 
     return (
-        <div className="flex flex-col gap-10 items-center">
+        <div className="flex flex-col gap-5 lg:gap-10 items-center">
             <h2 className="text-xl font-semibold text-slate-800">Select a student:</h2>
-            <ul className="flex flex-row gap-5">
+            <ul className="grid grid-rows-2 grid-flow-col gap-4 lg:flex lg:flex-row gap-5">
                 {students.map((student) => (
                     <li
                         key={student.id}
