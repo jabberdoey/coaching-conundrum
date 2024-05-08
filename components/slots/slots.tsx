@@ -86,7 +86,7 @@ export default function Slots({
         return (
             <div className="w-full h-full fixed z-50">
                 <div className="z-40 w-full fixed flex flex-col h-screen items-center justify-center">
-                    <div className="bg-white drop-shadow-md fixed rounded-lg w-1/3 align-middle p-8 bg-white z-10">
+                    <div className="bg-white drop-shadow-md fixed rounded-lg w-96 lg:w-2/5 align-middle p-8 bg-white z-10">
                         <div className="mb-5 text-slate-600">
                             Make yourself available to students on <span className="font-bold text-slate-800">{getDate(new Date())}</span> at <span className="font-bold text-slate-800">{getTimeInHourFormat(startTime)} - {getTimeInHourFormat(endTime)}</span>?
                         </div>
@@ -146,7 +146,7 @@ export default function Slots({
         return (
             <div className="w-full h-full fixed z-50">
                 <div className="z-40 w-full fixed flex flex-col h-screen items-center justify-center">
-                    <div className="bg-white drop-shadow-md fixed rounded-lg w-1/3 align-middle p-8 bg-white z-10">
+                    <div className="bg-white drop-shadow-md fixed rounded-lg w-96 lg:w-2/5 align-middle p-8 bg-white z-10">
                         <div className="mb-5 text-slate-600">
                             Call <span className="font-bold">{selectedBooking.student.name}</span> at <span className="font-bold">{selectedBooking.student.phone}</span>?
                         </div>

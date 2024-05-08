@@ -87,7 +87,7 @@ export default function Booking({
         return (
             <div className="w-full h-full fixed z-50">
                 <div className="z-40 w-full fixed flex flex-col h-screen items-center justify-center">
-                    <div className="bg-white drop-shadow-md fixed rounded-lg w-1/3 align-middle p-8 bg-white z-10">
+                    <div className="bg-white drop-shadow-md fixed rounded-lg w-96 lg:w-2/5 align-middle p-8 bg-white z-10">
                         <div className="mb-5 text-slate-600">
                             Confirm booking on <span className="font-bold">{getDate(new Date())}</span> at <span className="font-bold">{getTimeInHourFormat(startTime)} - {getTimeInHourFormat(endTime)}</span> with <span className="font-bold">{coach.name}</span>?
                         </div>
@@ -152,7 +152,7 @@ export default function Booking({
         return (
             <div className="w-full h-full fixed z-50">
                 <div className="z-40 w-full fixed flex flex-col h-screen items-center justify-center">
-                    <div className="bg-white drop-shadow-md fixed rounded-lg w-1/3 align-middle p-8 bg-white z-10">
+                    <div className="bg-white drop-shadow-md fixed rounded-lg w-96 lg:w-2/5 align-middle p-8 bg-white z-10">
                         <div className="mb-5 text-slate-600">
                             Call <span className="font-bold">{selectedBooking.coach.name}</span> at <span className="font-bold">{selectedBooking.coach.phone}</span>?
                         </div>

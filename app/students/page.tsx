@@ -31,7 +31,7 @@ export default async function Page() {
                             href={`/booking/${student.id}`}
                         >
                             <Image
-                                className="p-2 bg-white rounded-full"
+                                className="p-1 lg:p-2 bg-white rounded-full"
                                 alt={`Coach ${student.name}`}
                                 src={`/avatars/${student.name.toLowerCase().replace(" ", "-")}.jpg`}
                                 width={150}
