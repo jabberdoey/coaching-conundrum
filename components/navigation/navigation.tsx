@@ -12,7 +12,7 @@ export default function Navigation() {
 
     return (
         <div className="flex items-center justify-center">
-            <div className="fixed mt-20">
+            <div className="mt-5">
                 <ul className="flex flex-row justify-center gap-3">
                     {links.map((link, index) => (
                         <li

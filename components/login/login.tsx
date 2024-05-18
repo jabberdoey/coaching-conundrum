@@ -6,7 +6,7 @@ export default async function Login() {
     const { logins } = constants;
 
     return (
-        <div className="flex flex-col gap-10 items-center">
+        <div className="flex flex-col gap-10 items-center mt-10">
             <h2 className="text-xl font-semibold text-slate-800">Log in as:</h2>
             <ul className="flex flex-row gap-5">
                 {logins.map((login, index) => (
